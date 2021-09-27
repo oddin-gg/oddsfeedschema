@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.oddin.gg/v1" xmlns="http://schemas.oddin.gg/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="urn.xsd"/>
+
+    <xs:complexType name="sportEventStatusBase">
+        <xs:sequence>
+            <xs:element type="periodScores" name="period_scores" minOccurs="0"/>
+            <xs:element type="scoreboard" name="scoreboard" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="status" use="required"/>
+        <xs:attribute type="xs:string" name="match_status_code" use="optional"/>
+        <xs:attribute type="competitorUrn" name="winner_id" use="optional"/>
+        <xs:attribute type="xs:float" name="home_score" use="optional"/>
+        <xs:attribute type="xs:float" name="away_score" use="optional"/>
+        <xs:attribute type="xs:boolean" name="scoreboard_available" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="sportEventStatus">
+        <xs:complexContent>
+            <xs:extension base="sportEventStatusBase">
+                <xs:attribute type="xs:double" name="home_score" use="optional"/>
+                <xs:attribute type="xs:double" name="away_score" use="optional"/>
+                <xs:attribute type="xs:double" name="aggregate_home_score" use="optional"/>
+                <xs:attribute type="xs:double" name="aggregate_away_score" use="optional"/>
+                <xs:attribute type="competitorUrn" name="aggregate_winner_id" use="optional"/>
+                <xs:attribute type="xs:int" name="status_code" use="optional"/>
+                <xs:attribute type="xs:int" name="match_status_code" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="periodScores">
+        <xs:sequence>
+            <xs:element type="periodScore" name="period_score" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="periodScoreBase">
+        <xs:attribute type="xs:string" name="type" use="required"/>
+        <xs:attribute type="xs:int" name="number" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="periodScore">
+        <xs:complexContent>
+            <xs:extension base="periodScoreBase">
+                <xs:attribute type="xs:double" name="home_score" use="required"/>
+                <xs:attribute type="xs:double" name="away_score" use="required"/>
+                <xs:attribute type="xs:int" name="match_status_code" use="required"/>
+                <xs:attribute type="xs:int" name="home_won_rounds" use="optional"/>
+                <xs:attribute type="xs:int" name="away_won_rounds" use="optional"/>
+                <xs:attribute type="xs:int" name="home_kills" use="optional"/>
+                <xs:attribute type="xs:int" name="away_kills" use="optional"/>
+                <xs:attribute type="xs:int" name="home_goals" use="optional"/>
+                <xs:attribute type="xs:int" name="away_goals" use="optional"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="scoreboard">
+        <xs:attribute type="xs:int" name="current_ct_team" use="optional"/>
+        <xs:attribute type="xs:int" name="home_won_rounds" use="optional"/>
+        <xs:attribute type="xs:int" name="away_won_rounds" use="optional"/>
+        <xs:attribute type="xs:int" name="current_round" use="optional"/>
+        <xs:attribute type="xs:int" name="home_kills" use="optional"/>
+        <xs:attribute type="xs:int" name="away_kills" use="optional"/>
+        <xs:attribute type="xs:int" name="home_destroyed_turrets" use="optional"/>
+        <xs:attribute type="xs:int" name="away_destroyed_turrets" use="optional"/>
+        <xs:attribute type="xs:int" name="home_gold" use="optional"/>
+        <xs:attribute type="xs:int" name="away_gold" use="optional"/>
+        <xs:attribute type="xs:int" name="home_destroyed_towers" use="optional"/>
+        <xs:attribute type="xs:int" name="away_destroyed_towers" use="optional"/>
+        <xs:attribute type="xs:int" name="home_goals" use="optional"/>
+        <xs:attribute type="xs:int" name="away_goals" use="optional"/>
+    </xs:complexType>
+</xs:schema>
