@@ -142,7 +142,18 @@
 
         <xs:attributeGroup ref="marketAttributes"/>
         <xs:attribute name="status" type="marketStatus"/>
+        <xs:attribute name="favourite" type="favouriteType" use="optional"/>
     </xs:complexType>
+
+    <xs:simpleType name="favouriteType">
+        <xs:restriction base="xs:int">
+            <xs:enumeration value="1">
+                <xs:annotation>
+                    <xs:documentation>YES</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
 
     <xs:simpleType name="outcomeActive">
         <xs:restriction base="xs:int">
