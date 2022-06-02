@@ -82,6 +82,8 @@
         <xs:attribute name="away_destroyed_towers" type="xs:int" use="optional"/>
         <xs:attribute name="home_goals" type="xs:int" use="optional"/>
         <xs:attribute name="away_goals" type="xs:int" use="optional"/>
+        <xs:attribute name="time" type="xs:int" use="optional"/>
+        <xs:attribute name="game_time" type="xs:int" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="periodscoresType">
