@@ -69,6 +69,7 @@
 
     <xs:complexType name="scoreboard">
         <xs:attribute name="current_ct_team" type="xs:int" use="optional"/>
+        <xs:attribute name="current_def_team" type="xs:int" use="optional"/>
         <xs:attribute name="home_won_rounds" type="xs:int" use="optional"/>
         <xs:attribute name="away_won_rounds" type="xs:int" use="optional"/>
         <xs:attribute name="current_round" type="xs:int" use="optional"/>
