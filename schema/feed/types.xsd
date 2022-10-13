@@ -52,6 +52,8 @@
     <xs:complexType name="market">
         <xs:attributeGroup ref="marketAttributes"/>
         <xs:attribute name="void_reason" type="xs:int"/>
+        <xs:attribute name="void_reason_id" type="xs:int"/>
+        <xs:attribute name="void_reason_params" type="xs:string"/>
     </xs:complexType>
 
     <xs:complexType name="sportEventStatus">
