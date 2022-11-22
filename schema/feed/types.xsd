@@ -87,6 +87,9 @@
         <xs:attribute name="away_goals" type="xs:int" use="optional"/>
         <xs:attribute name="time" type="xs:int" use="optional"/>
         <xs:attribute name="game_time" type="xs:int" use="optional"/>
+        <xs:attribute name="home_points" type="xs:int" use="optional"/>
+        <xs:attribute name="away_points" type="xs:int" use="optional"/>
+        <xs:attribute name="remaining_game_time" type="xs:int" use="optional"/>
     </xs:complexType>
 
     <xs:complexType name="periodscoresType">
@@ -107,6 +110,8 @@
         <xs:attribute name="away_kills" type="xs:decimal" use="optional"/>
         <xs:attribute name="home_goals" type="xs:decimal" use="optional"/>
         <xs:attribute name="away_goals" type="xs:decimal" use="optional"/>
+        <xs:attribute name="home_points" type="xs:decimal" use="optional"/>
+        <xs:attribute name="away_points" type="xs:decimal" use="optional"/>
     </xs:complexType>
 
     <xs:simpleType name="eventStatusStatus">
