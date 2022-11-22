@@ -52,6 +52,8 @@
                 <xs:attribute type="xs:int" name="away_kills" use="optional"/>
                 <xs:attribute type="xs:int" name="home_goals" use="optional"/>
                 <xs:attribute type="xs:int" name="away_goals" use="optional"/>
+                <xs:attribute type="xs:int" name="home_points" use="optional"/>
+                <xs:attribute type="xs:int" name="away_points" use="optional"/>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
@@ -72,5 +74,8 @@
         <xs:attribute type="xs:int" name="away_destroyed_towers" use="optional"/>
         <xs:attribute type="xs:int" name="home_goals" use="optional"/>
         <xs:attribute type="xs:int" name="away_goals" use="optional"/>
+        <xs:attribute type="xs:int" name="home_points" use="optional"/>
+        <xs:attribute type="xs:int" name="away_points" use="optional"/>
+        <xs:attribute type="xs:int" name="remaining_game_time" use="optional"/>
     </xs:complexType>
 </xs:schema>
