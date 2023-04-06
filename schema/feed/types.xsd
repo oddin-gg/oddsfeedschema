@@ -18,6 +18,12 @@
         <xs:union memberTypes="xs:anyURI xs:long"/>
     </xs:simpleType>
 
+    <xs:simpleType name="outcomeType" final="restriction" >
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="player"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:attributeGroup name="messageAttributes">
         <xs:attribute name="product" type="xs:int" use="required"/>
         <xs:attribute name="event_id" type="xs:string" use="required"/>
@@ -28,6 +34,8 @@
     <xs:attributeGroup name="marketAttributes">
         <xs:attribute name="id" type="xs:int" use="required"/>
         <xs:attribute name="specifiers" type="xs:string"/>
+        <xs:attribute name="includes_outcomes_of_type" type="xs:string" use="optional"/>
+        <xs:attribute name="outcome_type" type="outcomeType" use="optional"/>
     </xs:attributeGroup>
 
     <xs:simpleType name="result">
