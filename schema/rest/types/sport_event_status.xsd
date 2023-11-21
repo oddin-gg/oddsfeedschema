@@ -76,6 +76,8 @@
         <xs:attribute type="xs:int" name="away_goals" use="optional"/>
         <xs:attribute type="xs:int" name="home_points" use="optional"/>
         <xs:attribute type="xs:int" name="away_points" use="optional"/>
+        <xs:attribute type="xs:int" name="home_games" use="optional"/>
+        <xs:attribute type="xs:int" name="away_games" use="optional"/>
         <xs:attribute type="xs:int" name="remaining_game_time" use="optional"/>
     </xs:complexType>
 </xs:schema>
