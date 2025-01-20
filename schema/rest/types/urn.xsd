@@ -12,6 +12,12 @@
         </xs:restriction>
     </xs:simpleType>
 
+    <xs:simpleType name="playerUrn">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="od:player:[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+
     <xs:simpleType name="teamUrn">
         <xs:restriction base="xs:string">
             <xs:pattern value="od:team:[0-9]+"/>
