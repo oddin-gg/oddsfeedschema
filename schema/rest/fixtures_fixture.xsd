@@ -18,7 +18,6 @@
             <xs:extension base="sportEvent">
                 <xs:sequence>
                     <xs:element type="tvChannels" name="tv_channels" minOccurs="0"/>
-                    <xs:element type="extraInfo" name="extra_info" minOccurs="0"/>
                 </xs:sequence>
                 <xs:attribute type="xs:dateTime" name="start_time" use="optional"/>
             </xs:extension>
@@ -28,12 +27,6 @@
     <xs:complexType name="fixtureCompetitors">
         <xs:sequence>
             <xs:element type="teamCompetitor" name="competitor" maxOccurs="unbounded" minOccurs="0"/>
-        </xs:sequence>
-    </xs:complexType>
-
-    <xs:complexType name="extraInfo">
-        <xs:sequence>
-            <xs:element type="info" name="info" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
