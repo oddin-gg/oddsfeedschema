@@ -8,6 +8,7 @@
         <xs:sequence>
             <xs:element type="tournament" name="tournament" minOccurs="0"/>
             <xs:element type="sportEventCompetitors" name="competitors" minOccurs="0"/>
+            <xs:element type="extraInfo" name="extra_info" minOccurs="0"/>
         </xs:sequence>
         <xs:attributeGroup ref="sportEventAttributes"/>
         <xs:attribute type="xs:string" name="liveodds" use="optional"/>
@@ -17,6 +18,12 @@
     <xs:complexType name="sportEventCompetitors">
         <xs:sequence>
             <xs:element type="teamCompetitor" name="competitor" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="extraInfo">
+        <xs:sequence>
+            <xs:element type="info" name="info" maxOccurs="unbounded" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
 
