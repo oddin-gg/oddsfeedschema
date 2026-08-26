@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.oddin.gg/v1" xmlns="http://schemas.oddin.gg/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="types/urn.xsd"/>
     <xs:include schemaLocation="types/tournament.xsd"/>
     <xs:include schemaLocation="types/team.xsd"/>
@@ -30,11 +30,6 @@
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="info">
-        <xs:attribute type="xs:string" name="key" use="required"/>
-        <xs:attribute type="xs:string" name="value" use="required"/>
-    </xs:complexType>
-
     <xs:complexType name="tvChannels">
         <xs:sequence>
             <xs:element type="tvChannel" name="tv_channel" maxOccurs="unbounded" minOccurs="0"/>
@@ -44,6 +39,7 @@
     <xs:complexType name="tvChannel">
         <xs:attribute type="xs:string" name="name" use="required"/>
         <xs:attribute type="xs:string" name="language" use="optional"/>
+        <xs:attribute type="xs:dateTime" name="start_time" use="optional"/>
         <xs:attribute type="xs:string" name="stream_url" use="optional"/>
     </xs:complexType>
 </xs:schema>
