@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+  push:
+    branches:
+      - 'main'
+    tags:
+      - 'v*'
+
+# The only job here compiles schemas and validates XML; it needs nothing but read
+# access to the checked-out tree.
+permissions:
+  contents: read
+
+jobs:
+  schema:
+    name: Schema conformance
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          # No job pushes with git credentials; don't persist the token into
+          # .git/config where checked-out repo code could read it.
+          persist-credentials: false
+      - uses: actions/setup-java@dd06d9cba3e5552c54d9f8ea23572deb30010f7c # v6.0.0
+        with:
+          distribution: temurin
+          java-version: '17'
+      # Compiles every schema the SDKs generate their bindings from, then
+      # validates the captured payloads in test/fixtures against them. Fails on
+      # a schema that does not compile, a payload that does not validate, an
+      # attribute a payload carries but the schema does not declare, and a
+      # message type or endpoint with no payload at all.
+      - name: Check schemas against captured payloads
+        run: make check

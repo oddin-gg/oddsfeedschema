@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.oddin.gg/v1" xmlns="http://schemas.oddin.gg/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:include schemaLocation="types/player.xsd"/>
 
     <xs:element name="player_profile" type="playerProfileEndpoint"/>
@@ -7,5 +7,6 @@
         <xs:sequence>
             <xs:element type="player" name="player" minOccurs="1" maxOccurs="1"/>
         </xs:sequence>
+        <xs:attribute type="xs:dateTime" name="generated_at"/>
     </xs:complexType>
 </xs:schema>

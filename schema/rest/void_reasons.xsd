@@ -8,7 +8,7 @@
                 <xs:element name="void_reason" maxOccurs="unbounded" minOccurs="0">
                     <xs:complexType mixed="true">
                         <xs:sequence>
-                            <xs:element name="param" minOccurs="0">
+                            <xs:element name="param" minOccurs="0" maxOccurs="unbounded">
                                 <xs:complexType>
                                     <xs:simpleContent>
                                         <xs:extension base="xs:string">

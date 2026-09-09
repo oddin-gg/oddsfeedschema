@@ -35,4 +35,10 @@
             <xs:pattern value="od:match:[0-9]+"/>
         </xs:restriction>
     </xs:simpleType>
+
+    <xs:simpleType name="fixtureChangeUrn">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="od:(match|tournament):[0-9]+"/>
+        </xs:restriction>
+    </xs:simpleType>
 </xs:schema>
