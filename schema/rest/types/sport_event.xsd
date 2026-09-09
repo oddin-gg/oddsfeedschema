@@ -27,9 +27,17 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="info">
+        <xs:attribute type="xs:string" name="key" use="required"/>
+        <xs:attribute type="xs:string" name="value" use="required"/>
+    </xs:complexType>
+
     <xs:attributeGroup name="sportEventAttributes">
         <xs:attribute name="id" type="sportEventUrn"/>
         <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute type="xs:string" name="type" use="optional"/>
         <xs:attribute type="xs:dateTime" name="scheduled" use="optional"/>
+        <xs:attribute type="xs:dateTime" name="scheduled_end" use="optional"/>
+        <xs:attribute type="xs:boolean" name="start_time_tbd" use="optional"/>
     </xs:attributeGroup>
 </xs:schema>
