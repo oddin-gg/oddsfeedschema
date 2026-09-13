@@ -58,3 +58,13 @@ change on `main` still has to pass that test.
 
 Releases before `v1.0.0` used a single `vYYYY.NN` tag (`v2025.01`). It is left in
 place and not continued.
+
+To cut one, push a `vX.Y.Z` tag. CI runs the same `make check` against that tag
+and only then publishes the GitHub release, with a zip of `schema/` attached for
+consumers who regenerate bindings and do not want the fixtures and tooling. A tag
+whose schema does not compile never becomes a download.
+
+If a release needs more than a generated changelog - a breaking change, anything
+clients have to act on - create the release by hand before pushing the tag. The
+job leaves existing notes alone and only adds the asset. A tag with a hyphen in
+it (`v1.1.0-rc.1`) is published as a pre-release.
