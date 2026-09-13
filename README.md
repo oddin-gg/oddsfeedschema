@@ -36,3 +36,25 @@ a payload that exercises it in the same change.
 
 [NOTES.md](NOTES.md) records the conventions, which attributes exist in an SDK but
 on no wire, and why `<sport_event_status>` is defined twice on purpose.
+
+### Versioning
+
+Releases are tagged `vMAJOR.MINOR.PATCH`. The major tracks the generation of the
+contract, not this repository's own history:
+
+* **MAJOR** - the contract generation. `v1.x.y` describes wire v1, the one behind
+  the `/v1/` REST paths and the `feed/v1` / `rest/v1` SDK packages. A `v2.0.0`
+  would only ever accompany a `/v2/`, so a major bump is something clients are
+  told about rather than something they discover.
+* **MINOR** - additive: a new optional attribute, a new message or endpoint.
+  Nothing that was valid before stops being valid, so it is safe to ignore until
+  you want the data.
+* **PATCH** - a correction that does not change what the producer sends: a schema
+  that did not compile, a wrong type or URN pattern, documentation, CI.
+
+Pin a tag where you want reproducibility. gosdk's schema conformance test takes
+one through `ODDSFEEDSCHEMA_REF` and otherwise follows `main`, so an untagged
+change on `main` still has to pass that test.
+
+Releases before `v1.0.0` used a single `vYYYY.NN` tag (`v2025.01`). It is left in
+place and not continued.
