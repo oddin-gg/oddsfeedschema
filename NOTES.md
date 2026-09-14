@@ -43,8 +43,8 @@ here fails the check. See [README.md](README.md#validating-the-schema).
 Attributes that exist in an SDK but on no wire
 -----
 
-Betradar/UOF heritage, carried over when the SDK models were first generated from
-a Betradar schema. No Oddin producer emits them and nothing consumes them.
+Legacy fields, carried over from the original code generation of the SDK models.
+No Oddin producer emits them and nothing consumes them.
 
 **Verdict: do not add them to the schema.** They should be dropped from the SDK
 models instead, one SDK at a time; that is out of scope here. The counts below
@@ -52,8 +52,8 @@ are the SDKs that still carry a field for the attribute, checked 2026-08-26.
 
 | Attribute | Where in the SDKs | Verdict |
 | --- | --- | --- |
-| `event_ref_id` | gosdk, netcoresdk, javasdk (as `ref_event_id`) | Betradar event alias. Not sent. |
-| `ref_id` | all three, on nearly every element | Betradar id alias. Not sent. |
+| `event_ref_id` | gosdk, netcoresdk, javasdk (as `ref_event_id`) | Legacy event alias. Not sent. |
+| `ref_id` | all three, on nearly every element | Legacy id alias. Not sent. |
 | `superceded_by` | javasdk; commented out in the producer as "not used" | Not sent. |
 | `certainty` | javasdk | Not sent. |
 | `betstop_reason`, `betting_status` | javasdk | Not sent. `bet_stop` carries `groups` and `market_status` instead - see `schema/feed/bet_stop.xsd`. |
@@ -69,7 +69,7 @@ are the SDKs that still carry a field for the attribute, checked 2026-08-26.
 | `match_status_code` on the **feed** `sport_event_status` | nowhere | The audit put it here by mistake. On the feed the attribute lives on `period_score` (declared, required) and on the SDK-only `results` element; the status itself sends `match_status`. Only `winner_id` was genuinely missing from the feed status. |
 
 Child elements in the same category: `results` (netcoresdk, javasdk as
-`resultType`; Betradar's per-period result list), `clock` (netcoresdk as
+`resultType`; a legacy per-period result list), `clock` (netcoresdk as
 `clockType`, declared but never wired to a field), `statistics` and
 `reference_ids` (gosdk), `market_metadata`, `odds_generation_properties` and
 `delayed_info` (javasdk). None is emitted; none is declared.

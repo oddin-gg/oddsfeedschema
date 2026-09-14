@@ -23,9 +23,9 @@
         <xs:attribute type="xs:double" name="away_score" use="optional"/>
         <xs:attribute type="xs:boolean" name="scoreboard_available" use="optional"/>
         <!--
-            Betradar/UOF heritage from the original code generation. No Oddin
-            producer emits these and no SDK reads them; they are kept declared so
-            existing generated bindings keep compiling. Do not build on them.
+            Legacy, from the original code generation. No Oddin producer emits
+            these and no SDK reads them; they are kept declared so existing
+            generated bindings keep compiling. Do not build on them.
             See NOTES.md.
         -->
         <xs:attribute type="xs:int" name="status_code" use="optional"/>
