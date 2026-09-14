@@ -12,8 +12,9 @@ on:
     tags:
       - 'v*'
 
-# The only job here compiles schemas and validates XML; it needs nothing but read
-# access to the checked-out tree.
+# Least-privilege default: the schema job needs nothing but read access to the
+# checked-out tree. The release job elevates to contents:write per job below, so
+# a write scope is never handed to the job that executes repository code.
 permissions:
   contents: read
 
@@ -38,3 +39,38 @@ jobs:
       # message type or endpoint with no payload at all.
       - name: Check schemas against captured payloads
         run: make check
+
+  release:
+    name: Release
+    # Only a tag builds a release, and only after the schema check on that same
+    # tag has passed - a tag that does not compile must not become a download.
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: schema
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        with:
+          persist-credentials: false
+      # Consumers that regenerate bindings want the XSDs and nothing else;
+      # GitHub's own source archives carry the fixtures and tooling too.
+      - name: Package the schema
+        run: zip -r "oddsfeedschema-${GITHUB_REF_NAME}.zip" schema
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          asset="oddsfeedschema-${TAG}.zip"
+          # A release written by hand before the tag was pushed keeps its notes;
+          # this only adds the asset. A bare tag gets generated notes instead.
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$asset" --clobber
+          else
+            prerelease=""
+            case "$TAG" in *-*) prerelease="--prerelease" ;; esac
+            gh release create "$TAG" "$asset" \
+              --title "$TAG" --generate-notes $prerelease
+          fi
