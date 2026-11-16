@@ -58,5 +58,13 @@
         <xs:attribute name="game_time" type="xs:int" use="optional"/>
         <xs:attribute name="elapsed_time" type="xs:int" use="optional"/>
         <xs:attribute name="remaining_game_time" type="xs:int" use="optional"/>
+        <!--
+            eHockey only. Whether the in-game clock is running:
+              true   the clock runs
+              false  the clock stands: a pause within a period, between periods,
+                     before the start or after the end
+              absent the state is unknown; a client must not read it as running
+        -->
+        <xs:attribute name="clock_running" type="xs:boolean" use="optional"/>
     </xs:attributeGroup>
 </xs:schema>
